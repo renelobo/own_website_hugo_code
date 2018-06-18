@@ -1,0 +1,27 @@
+{{ $ := .root }}
+{{ $page := .page }}
+
+<!-- Custom 2 widget for CV page -->
+
+<div id="profile">
+      {{ if $.Site.Params.avatar }}
+      <div class="portrait" style="background-image: url('{{ $.Site.BaseURL }}img/{{ $.Site.Params.avatar }}');"></div>
+      {{ end }}
+</div>
+<div class="row" style="margin-top: -250px;">
+  {{ if $page.Title }}
+  <div class="col-xs-12 col-md-4 section-heading">
+    <h1>{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
+    {{ with $page.Params.subtitle }}<p>{{ . | markdownify }}</p>{{ end }}
+  </div>
+  <div class="col-xs-12 col-md-8">
+    {{ $page.Content }}
+  </div>
+  {{ else }}
+  <div class="col-md-12">
+    {{ $page.Content }}
+  </div>
+  {{ end }}
+</div>
+
+
